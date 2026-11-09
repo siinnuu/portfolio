@@ -1,0 +1,64 @@
+/* Keyframe & Utility Animations */
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.04);
+  }
+}
+
+@keyframes bounceScroll {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+.scroll-indicator-icon {
+  animation: bounceScroll 2s ease-in-out infinite;
+}
+
+/* Image zoom on hover */
+.zoom-on-hover {
+  overflow: hidden;
+  transition: transform var(--duration-hover) var(--ease-base);
+}
+
+.zoom-on-hover img {
+  transition: transform 600ms var(--ease-base);
+}
+
+.zoom-on-hover:hover img {
+  transform: scale(1.04);
+}
+
+/* Card hover lift */
+.card-hover-lift {
+  transition: transform var(--duration-hover) var(--ease-base),
+              box-shadow var(--duration-hover) var(--ease-base),
+              border-color var(--duration-hover) var(--ease-base);
+}
+
+.card-hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(105, 0, 171, 0.2);
+}
+
+/* Reveal transition helpers */
+.fade-up-enter {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 700ms var(--ease-base), transform 700ms var(--ease-base);
+}
+
+.fade-up-enter.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+

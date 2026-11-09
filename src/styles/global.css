@@ -1,0 +1,328 @@
+@import url('https://api.fontshare.com/v2/css?f[]=array@400,600,700,800&f[]=clash-display@200,300,400,500,600,700&display=swap');
+
+:root {
+  /* Brand Colors */
+  --color-purple: #6900AB;
+  --color-pink: #F586FF;
+  --color-white: #FFFFFF;
+  --color-near-black: #17131B;
+  --color-light-bg: #FFF5FF;
+
+  /* Semantic Color System */
+  --color-primary: var(--color-purple);
+  --color-accent: var(--color-pink);
+  --color-bg-dark: var(--color-near-black);
+  --color-bg-light: var(--color-light-bg);
+  --color-surface-dark: #231B29;
+  --color-surface-dark-hover: #2D2235;
+  --color-border-dark: rgba(245, 134, 255, 0.22);
+  --color-border-light: rgba(105, 0, 171, 0.16);
+
+  /* Typography */
+  --font-display: 'Array', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-body: 'Clash Display', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Spacing Tokens (Skill-compliant) */
+  --space-0: 0px;
+  --space-25: 2px;
+  --space-50: 4px;
+  --space-75: 8px;
+  --space-100: 12px;
+  --space-200: 16px;
+  --space-300: 24px;
+  --space-400: 32px;
+  --space-500: 40px;
+  --space-600: 48px;
+  --space-700: 64px;
+  --space-800: 80px;
+  --space-900: 96px;
+
+  /* Radii Tokens */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+  --radius-full: 9999px;
+
+  /* Motion Curves (Skill-compliant) */
+  --ease-base: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-base: 500ms;
+  --duration-hover: 300ms;
+}
+
+/* CSS Reset & Defaults */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--color-near-black);
+  color: var(--color-near-black);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.5;
+  overflow-x: hidden;
+  background-color: var(--color-near-black);
+}
+
+/* Accessible focus outline */
+:focus-visible {
+  outline: 2px solid var(--color-pink);
+  outline-offset: 3px;
+}
+
+/* Typography styles */
+h1, h2, h3, .font-display {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+p, span, a, button, label {
+  font-family: var(--font-body);
+  text-wrap: pretty;
+}
+
+/* Dot pattern accents similar to the PDF aesthetic */
+.dot-matrix-decor {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.dot-matrix-decor span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: currentColor;
+  opacity: 0.6;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding-left: var(--space-300);
+    padding-right: var(--space-300);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding-left: var(--space-500);
+    padding-right: var(--space-500);
+  }
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-75);
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 8px 16px;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform var(--duration-hover) var(--ease-base),
+              background-color var(--duration-hover) var(--ease-base),
+              border-color var(--duration-hover) var(--ease-base),
+              color var(--duration-hover) var(--ease-base);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background-color: var(--color-purple);
+  color: var(--color-white);
+  border-color: rgba(245, 134, 255, 0.4);
+}
+
+.btn-primary:hover {
+  background-color: #55008b;
+  border-color: var(--color-pink);
+}
+
+.btn-pink {
+  background-color: var(--color-pink);
+  color: var(--color-near-black);
+  border-color: rgba(105, 0, 171, 0.2);
+}
+
+.btn-pink:hover {
+  background-color: #f79dff;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-pink);
+  border-color: var(--color-pink);
+}
+
+.btn-outline:hover {
+  background-color: rgba(245, 134, 255, 0.12);
+}
+
+.btn-outline-white {
+  background-color: transparent;
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.35);
+}
+
+.btn-outline-white:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--color-white);
+}
+
+/* Badge / Pills */
+.pill-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-75);
+  padding: 4px 12px;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Section padding */
+.section {
+  padding-top: var(--space-800);
+  padding-bottom: var(--space-800);
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-top: var(--space-900);
+    padding-bottom: var(--space-900);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  .section {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 13vw, 5rem) !important;
+  }
+
+  /* Prevent iOS zoom on input focus */
+  input, textarea, select {
+    font-size: 16px !important;
+  }
+
+  /* Major Projects filter bar — decreased radius in mobile view */
+  .projects-filter-tabs {
+    border-radius: 12px !important;
+    padding: 4px !important;
+    gap: 6px !important;
+  }
+
+  .projects-filter-tabs button {
+    border-radius: 8px !important;
+    padding: 6px 12px !important;
+    font-size: 0.8125rem !important;
+  }
+
+  /* Responsive poster grid for mobile */
+  .posters-responsive-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .posters-responsive-grid .poster-card-image {
+    height: 220px !important;
+  }
+
+  .posters-responsive-grid .poster-card-info {
+    padding: 10px 12px !important;
+  }
+
+  .posters-responsive-grid .poster-card-title {
+    font-size: 0.825rem !important;
+  }
+
+  /* Software skills 2-column mobile layout */
+  .software-skill-box {
+    flex: 1 1 calc(50% - 12px) !important;
+    min-width: 130px !important;
+    max-width: 100% !important;
+    padding: 18px 12px !important;
+  }
+
+  .software-skill-icon-wrapper {
+    width: 50px !important;
+    height: 50px !important;
+  }
+}
+
+@media (min-width: 769px) {
+  .projects-filter-tabs {
+    border-radius: 9999px !important;
+  }
+
+  .projects-filter-tabs button {
+    border-radius: 9999px !important;
+  }
+}
+
+/* Touch responsiveness */
+button, a, input, textarea {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
