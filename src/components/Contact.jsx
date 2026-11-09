@@ -17,7 +17,7 @@ export default function Contact() {
     setIsSending(true)
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/amsinan1234@gmail.com', {
+      const response = await fetch('https://formsubmit.co/ajax/work.sinan7@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -40,8 +40,8 @@ export default function Contact() {
         throw new Error('Fallback to email client')
       }
     } catch (err) {
-      // Direct mailto fallback to amsinan1234@gmail.com
-      const mailtoUrl = `mailto:amsinan1234@gmail.com?subject=${encodeURIComponent('Design Inquiry from ' + formData.name)}&body=${encodeURIComponent(formData.message + '\n\nSender: ' + formData.name + ' (' + formData.email + ')')}`
+      // Direct mailto fallback to work.sinan7@gmail.com
+      const mailtoUrl = `mailto:work.sinan7@gmail.com?subject=${encodeURIComponent('Design Inquiry from ' + formData.name)}&body=${encodeURIComponent(formData.message + '\n\nSender: ' + formData.name + ' (' + formData.email + ')')}`
       window.location.href = mailtoUrl
       setSubmitted(true)
       setFormData({ name: '', email: '', message: '' })
@@ -192,7 +192,7 @@ export default function Contact() {
 
               {/* Email */}
               <a
-                href="mailto:amsinan1234@gmail.com"
+                href="mailto:work.sinan7@gmail.com"
                 className="card-hover-lift"
                 style={{
                   display: 'flex',
@@ -225,7 +225,7 @@ export default function Contact() {
                     Email Inquiries
                   </div>
                   <div style={{ fontSize: '1.1rem', fontWeight: 600, color: '#FFFFFF', wordBreak: 'break-all' }}>
-                    amsinan1234@gmail.com
+                    work.sinan7@gmail.com
                   </div>
                 </div>
                 <ArrowUpRight size={18} style={{ marginLeft: 'auto', color: 'var(--color-pink)' }} />
@@ -324,7 +324,7 @@ export default function Contact() {
                   <CheckCircle2 size={36} color="var(--color-pink)" style={{ margin: '0 auto 12px' }} />
                   <h4 style={{ fontSize: '1.1rem', marginBottom: '4px' }}>Message Sent Directly!</h4>
                   <p style={{ fontSize: '0.875rem', color: 'rgba(255, 255, 255, 0.85)', marginBottom: '16px' }}>
-                    Your message has been delivered to <strong>amsinan1234@gmail.com</strong>. Sinan will get back to you shortly.
+                    Your message has been delivered to <strong>work.sinan7@gmail.com</strong>. Sinan will get back to you shortly.
                   </p>
                   <button
                     onClick={() => setSubmitted(false)}
