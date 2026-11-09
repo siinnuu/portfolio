@@ -31,6 +31,7 @@ import kasatt from '../assets/posters/kasatt2.png'
 
 export default function Projects({ onOpenLightbox }) {
   const [activeTab, setActiveTab] = useState('all')
+  const [flipbookLoaded, setFlipbookLoaded] = useState(false)
 
   const categories = [
     { id: 'all', label: 'All Works' },
@@ -269,23 +270,133 @@ export default function Projects({ onOpenLightbox }) {
               <div
                 style={{
                   width: '100%',
+                  height: 'clamp(280px, 45vh, 420px)',
                   borderRadius: '12px',
                   overflow: 'hidden',
                   backgroundColor: '#0F0B12',
                   boxShadow: '0 8px 24px rgba(0,0,0,0.6)',
+                  position: 'relative',
+                  border: '1px solid rgba(245, 134, 255, 0.2)',
                 }}
               >
+                {/* Skeleton Loader — displayed while the Heyzine flipbook loads */}
+                {!flipbookLoaded && (
+                  <div
+                    style={{
+                      position: 'absolute',
+                      inset: 0,
+                      zIndex: 2,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      backgroundColor: '#140E18',
+                      padding: '20px',
+                    }}
+                  >
+                    {/* Simulated dual-page magazine skeleton */}
+                    <div
+                      style={{
+                        width: 'min(92%, 520px)',
+                        height: 'min(68%, 210px)',
+                        borderRadius: '10px',
+                        display: 'grid',
+                        gridTemplateColumns: '1fr 1fr',
+                        gap: '8px',
+                        padding: '12px',
+                        backgroundColor: '#1E1625',
+                        border: '1px solid rgba(245, 134, 255, 0.2)',
+                        boxShadow: '0 8px 24px rgba(0, 0, 0, 0.5)',
+                        position: 'relative',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      {/* Left Page Skeleton */}
+                      <div
+                        style={{
+                          borderRadius: '6px',
+                          backgroundColor: '#16101D',
+                          padding: '10px',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '8px',
+                          position: 'relative',
+                          overflow: 'hidden',
+                        }}
+                      >
+                        <div className="skeleton-shimmer" style={{ width: '50%', height: '12px', borderRadius: '4px' }} />
+                        <div className="skeleton-shimmer" style={{ width: '100%', height: '52px', borderRadius: '4px' }} />
+                        <div className="skeleton-shimmer" style={{ width: '92%', height: '6px', borderRadius: '3px' }} />
+                        <div className="skeleton-shimmer" style={{ width: '70%', height: '6px', borderRadius: '3px' }} />
+                      </div>
+
+                      {/* Right Page Skeleton */}
+                      <div
+                        style={{
+                          borderRadius: '6px',
+                          backgroundColor: '#16101D',
+                          padding: '10px',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          gap: '8px',
+                          position: 'relative',
+                          overflow: 'hidden',
+                        }}
+                      >
+                        <div className="skeleton-shimmer" style={{ width: '100%', height: '48px', borderRadius: '4px' }} />
+                        <div className="skeleton-shimmer" style={{ width: '85%', height: '10px', borderRadius: '4px' }} />
+                        <div className="skeleton-shimmer" style={{ width: '95%', height: '6px', borderRadius: '3px' }} />
+                        <div className="skeleton-shimmer" style={{ width: '60%', height: '6px', borderRadius: '3px' }} />
+                      </div>
+                    </div>
+
+                    {/* Shimmer loading spinner & text */}
+                    <div
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '10px',
+                        marginTop: '16px',
+                      }}
+                    >
+                      <div
+                        className="animate-spin"
+                        style={{
+                          width: '16px',
+                          height: '16px',
+                          border: '2px solid rgba(245, 134, 255, 0.25)',
+                          borderTopColor: 'var(--color-pink)',
+                          borderRadius: '50%',
+                        }}
+                      />
+                      <span
+                        style={{
+                          color: 'rgba(255, 255, 255, 0.85)',
+                          fontSize: '0.825rem',
+                          fontWeight: 600,
+                          letterSpacing: '0.04em',
+                        }}
+                      >
+                        Loading Interactive Flipbook...
+                      </span>
+                    </div>
+                  </div>
+                )}
+
                 <iframe
                   allowFullScreen
                   allow="autoplay; fullscreen; clipboard-write"
                   scrolling="no"
                   title="NAMBIKKAI '26 Interactive Flipbook"
+                  onLoad={() => setFlipbookLoaded(true)}
                   style={{
                     width: '100%',
-                    height: 'clamp(280px, 45vh, 420px)',
-                    border: '1px solid rgba(245, 134, 255, 0.2)',
+                    height: '100%',
+                    border: 'none',
                     borderRadius: '12px',
                     display: 'block',
+                    opacity: flipbookLoaded ? 1 : 0,
+                    transition: 'opacity 0.4s ease-in-out',
                   }}
                   src="https://heyzine.com/flip-book/8127945d82.html"
                 />
